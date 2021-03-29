@@ -3,6 +3,8 @@ setInterval(setClock, 1000);
 const hourHand = document.querySelector('[data-hour-hand]');
 const minuteHand = document.querySelector('[data-minute-hand]');
 const secondHand = document.querySelector('[data-second-hand]');
+const digitalClock = document.querySelector('[data-digital-clock]');
+
 
 function setClock() {
    const currentDate = new Date();
@@ -13,10 +15,16 @@ function setClock() {
    setRotation(secondHand, seccondsRatio);
    setRotation(minuteHand, minutesRatio);
    setRotation(hourHand, hoursRatio);
+
+   setDigitalClock(currentDate);
 }
 
 function setRotation(element, rotationRation) {
    element.style.setProperty('--rotation', rotationRation * 360);
+}
+
+let setDigitalClock = date => {
+   digitalClock.innerHTML = date.toLocaleTimeString();
 }
 
 setClock()
